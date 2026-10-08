@@ -1,0 +1,128 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.chat {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 10px 20px;
+    background: $panel;
+    border-bottom: 1px solid $border;
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &__back {
+    display: none;
+    font-size: 22px;
+
+    @include mobile {
+      display: block;
+    }
+  }
+
+  &__name {
+    font-weight: 600;
+  }
+
+  &__sub {
+    font-size: 13px;
+    color: $muted;
+  }
+
+  &__messages {
+    @include content-padding(20px);
+
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+
+.bubble {
+  max-width: 70%;
+  padding: 8px 12px;
+  border-radius: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 4px 10px;
+  box-shadow: 0 1px 1px rgb(0 0 0 / 4%);
+
+  &--in {
+    align-self: flex-start;
+    background: $bubble-in;
+    border-bottom-left-radius: 6px;
+  }
+
+  &--out {
+    align-self: flex-end;
+    background: $bubble-out;
+    border-bottom-right-radius: 6px;
+  }
+
+  &__text {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  &__meta {
+    margin-left: auto;
+    display: flex;
+    gap: 4px;
+    font-size: 11px;
+    color: $muted;
+  }
+
+  &__status {
+    &--sent {
+      color: $accent;
+    }
+
+    &--error {
+      color: $danger;
+    }
+  }
+}
+
+.composer {
+  @include content-padding(10px, 16px);
+
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+
+  textarea {
+    flex: 1;
+    max-height: 160px;
+    padding: 12px 16px;
+    border: 0;
+    border-radius: 20px;
+    background: $panel;
+    outline: none;
+    resize: none;
+    field-sizing: content;
+  }
+
+  &__send {
+    @include center-grid;
+
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border: 0;
+    border-radius: 50%;
+    background: $accent;
+    color: #fff;
+  }
+}

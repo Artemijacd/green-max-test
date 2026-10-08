@@ -1,0 +1,41 @@
+@use 'variables' as *;
+
+@mixin mobile {
+  @media (max-width: $mobile-breakpoint) {
+    @content;
+  }
+}
+
+@mixin card {
+  background: $panel;
+  border-radius: $card-radius;
+  box-shadow: $card-shadow;
+}
+
+@mixin ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin center-grid {
+  display: grid;
+  place-items: center;
+}
+
+@mixin text-field {
+  border: 1px solid $border;
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: $bg;
+  outline: none;
+
+  &:focus {
+    border-color: $accent;
+  }
+}
+
+// Horizontal padding that keeps chat content within $content-max-width
+@mixin content-padding($vertical-top, $vertical-bottom: $vertical-top) {
+  padding: $vertical-top max(20px, calc((100% - #{$content-max-width}) / 2)) $vertical-bottom;
+}

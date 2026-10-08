@@ -1,0 +1,50 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.login {
+  @include center-grid;
+
+  min-height: 100vh;
+  padding: 16px;
+
+  &__card {
+    @include card;
+
+    width: 100%;
+    max-width: 380px;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  h1 {
+    margin: 4px 0 8px;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 13px;
+    color: $muted;
+  }
+
+  input {
+    @include text-field;
+  }
+
+  &__hint {
+    margin-top: -8px;
+    text-align: center;
+    font-size: 13px;
+    color: $accent;
+  }
+
+  &__error {
+    color: $danger;
+    font-size: 13px;
+  }
+}

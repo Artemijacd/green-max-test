@@ -1,0 +1,102 @@
+@use 'normalize';
+@use 'variables' as *;
+@use 'mixins' as *;
+
+:root {
+  font-family: $font-family;
+  color: $text;
+}
+
+body {
+  background: $bg;
+}
+
+button {
+  cursor: pointer;
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
+}
+
+.btn {
+  border: 0;
+  border-radius: 12px;
+  padding: 12px 16px;
+  background: $accent;
+  color: #fff;
+  font-weight: 600;
+
+  &:not(:disabled):hover {
+    background: $accent-hover;
+  }
+
+  &--small {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
+.link {
+  border: 0;
+  background: none;
+  color: $accent;
+  padding: 4px;
+}
+
+.logo {
+  @include center-grid;
+
+  align-self: center;
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  color: #fff;
+  font-weight: 800;
+  background: $logo-gradient;
+}
+
+.layout {
+  height: 100vh;
+  display: flex;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  background: $chat-bg;
+
+  > .banner {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.toast {
+  position: absolute;
+  bottom: 76px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  max-width: 90%;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: $danger-bg;
+  color: $danger-text;
+  font-size: 13px;
+}
+
+// On narrow screens show either the chat list or the open chat
+@include mobile {
+  .layout:has(.chat) .sidebar {
+    display: none;
+  }
+
+  .layout:not(:has(.chat)) .main {
+    display: none;
+  }
+}

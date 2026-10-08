@@ -1,0 +1,42 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.banner {
+  @include card;
+
+  max-width: 420px;
+  margin: auto;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+
+  &__title {
+    margin: 4px 0 0;
+    font-size: 20px;
+    overflow-wrap: anywhere;
+  }
+
+  &__text {
+    margin: 0;
+    color: $muted;
+    line-height: 1.45;
+  }
+
+  &__steps {
+    margin: 4px 0 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: left;
+  }
+
+  &--chat .avatar {
+    width: 72px;
+    height: 72px;
+    font-size: 28px;
+  }
+}
